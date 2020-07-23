@@ -21,14 +21,14 @@ class Board
     TEXT
   end
 
+  #checks if the row & column entered refer to a case in the board 
   def valid_value?(row, column)
-    #if the players puts a wrong value
-    # return false unless response.length==2
     return false unless %w[A B C].include?(row)
     return false unless [1,2,3].include?(column)
     true
   end
 
+  #checks if a case has already been played 
   def case_occupied?(row, column)
     @cases[row][column].played?
   end
@@ -55,6 +55,7 @@ class Board
     (@cases['A'][3].state == @cases['B'][2].state && @cases['B'][2].state == @cases['C'][1].state)
   end
 
+  #puts the players mark on a case
   def make_move(row, column, mark)
     @cases[row][column].take(mark)
   end
